@@ -24,7 +24,7 @@ function formatAs12HourClock(time) {
     return `0${hours}:${minutes} am`;
   }
 
-  return `${time}:${minutes}am`;
+  return `${hours}:${minutes} am`;
 }
 
 export { formatAs12HourClock };
