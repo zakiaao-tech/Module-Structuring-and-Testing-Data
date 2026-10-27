@@ -1,4 +1,6 @@
 // implement a function countChar that counts the number of times a character occurs in a string
+import { test } from "node:test";
+import { strict as assert } from "node:assert";
 import { countChar } from "./count.js";
 // Given a string `str` and a single character `char` to search for,
 // When the countChar function is called with these inputs,
@@ -14,7 +16,7 @@ test("should count multiple occurrences of a character", () => {
   const str = "aaaaa";
   const char = "a";
   const count = countChar(str, char);
-  expect(count).toEqual(5);
+  assert.equal(count, 5);
 });
 
 // Scenario: No Occurrences
@@ -27,5 +29,12 @@ test("should return 0 when there are no occurrences of a character", () => {
   const str = "hello";
   const char = "z";
   const count = countChar(str, char);
-  expect(count).toEqual(0);
+  assert.equal(count, 0);
+});
+
+test("should return 0 when the string is empty", () => {
+  const str = "";
+  const char = "a";
+  const count = countChar(str, char);
+  assert.equal(count, 0);
 });
