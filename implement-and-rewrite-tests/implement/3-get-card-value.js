@@ -24,5 +24,19 @@
 // execute the code to ensure all tests pass.
 
 export function getCardValue(card) {
-  // TODO: Implement this function
+  if (typeof card !== "string" || !/^(A|[2-9]|10|J|Q|K)[♠♥♦♣]$/.test(card)) {
+    throw new Error(`Expected a number followed by a suit, but got "${card}"`);
+  }
+
+  if (card.startsWith("A")) {
+    return 11;
+  }
+  if (card.startsWith("J") || card.startsWith("Q") || card.startsWith("K")) {
+    return 10;
+  }
+
+  const value = parseInt(card);
+  if (!isNaN(value)) {
+    return value;
+  }
 }
