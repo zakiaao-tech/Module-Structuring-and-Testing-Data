@@ -10,7 +10,36 @@ test("Valid single-digit card", () => {
 });
 
 test("Arbitrary non-card string", () => {
-  assert.throws(() => getCardValue("invalid"), /Expected a number followed by a suit, but got "invalid"/, "Expected clear error");
+  assert.throws(
+    () => getCardValue("invalid"),
+    /Expected a number followed by a suit, but got "invalid"/,
+    "Expected clear error"
+  );
 });
 
-// TODO: What other invalid card cases can you think of?
+test("Ace should return 11", () => {
+  assert.equal(getCardValue("A♠"), 11);
+});
+
+test("Face cards should return 10", () => {
+  assert.equal(getCardValue("J♠"), 10);
+  assert.equal(getCardValue("Q♠"), 10);
+  assert.equal(getCardValue("K♠"), 10);
+});
+
+test("Number cards should return their numeric value", () => {
+  assert.equal(getCardValue("2♠"), 2);
+  assert.equal(getCardValue("10♠"), 10);
+});
+
+test("Should throw an error for a missing suit", () => {
+  assert.throws(() => getCardValue("A"), Error);
+});
+
+test("Should throw an error for an invalid rank", () => {
+  assert.throws(() => getCardValue("X♠"), Error);
+});
+
+test("Should throw an error for an empty string", () => {
+  assert.throws(() => getCardValue(""), Error);
+});
