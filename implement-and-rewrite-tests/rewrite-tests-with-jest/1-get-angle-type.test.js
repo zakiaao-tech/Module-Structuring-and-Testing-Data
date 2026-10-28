@@ -1,5 +1,3 @@
-import { test, expect } from "@jest/globals";
-
 import { getAngleType } from "../implement/1-get-angle-type.js";
 
 // TODO: Write tests in Jest syntax to cover all cases/outcomes,
